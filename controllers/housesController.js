@@ -6,12 +6,14 @@ module.exports = {
         db.House
             .find(req.query)
             .sort({ _id: 1 })
+            .populate("rooms")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
         db.House
             .findById(req.params.id)
+            .populate("rooms")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },

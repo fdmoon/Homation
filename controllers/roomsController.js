@@ -6,12 +6,14 @@ module.exports = {
         db.Room
             .find(req.query)
             .sort({ _id: 1 })
+            .populate("sensors")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
         db.Room
             .findById(req.params.id)
+            .populate("sensors")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
