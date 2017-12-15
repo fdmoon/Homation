@@ -5,7 +5,7 @@ const houseSchema = new Schema({
     owner: { type: String, required: true },
     address: { type: String, required: true },
     layout: String,
-    date: { type: Date, default: Date.now },
+    created: { type: Date, default: Date.now },
     rooms: [
         {
             type: Schema.Types.ObjectId,

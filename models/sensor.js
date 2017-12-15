@@ -5,11 +5,11 @@ const sensorSchema = new Schema({
     name: { type: String, required: true },
     type: { type: String, required: true },
     position: String,
-    value: Number, 
+    value: { type: Number, default: 0 },
     unit: String,
     watt: { type: Number, default: 60 },
-    ontime: Number,
-    date: { type: Date, default: Date.now },
+    ontime: { type: Number, default: 0 },
+    created: { type: Date, default: Date.now }
 });
 
 const Sensor = mongoose.model("Sensor", sensorSchema);

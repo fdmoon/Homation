@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const roomSchema = new Schema({
     name: { type: String, required: true },
-    date: { type: Date, default: Date.now },
+    created: { type: Date, default: Date.now },
     sensors: [
         {
             type: Schema.Types.ObjectId,
