@@ -7,6 +7,8 @@ const sensorSchema = new Schema({
     position: String,
     value: Number, 
     unit: String,
+    watt: { type: Number, default: 60 },
+    ontime: Number,
     date: { type: Date, default: Date.now },
 });
 
