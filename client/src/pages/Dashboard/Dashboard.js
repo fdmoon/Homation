@@ -16,6 +16,56 @@ const Dashboard = () =>
         </Jumbotron>
       </Col>
     </Row>
+    <Row>
+      <Col size="md-2">
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <p>TEMPERATURE</p>
+            <h3>50</h3>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </Col>
+      <Col size="md-2">
+        <div class="small-box bg-green">
+          <div class="inner">
+            <p>HUMIDITY</p>
+            <h3>53<sup style={{"font-size": "20px"}}>%</sup></h3>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </Col>
+      <Col size="md-2">
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <p>LIGHTS</p>
+            <h3>3</h3>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </Col>
+      <Col size="md-2">
+        <div class="small-box bg-red">
+          <div class="inner">
+            <p>DOORS</p>
+            <h3>3</h3>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </Col> 
+    </Row>
   </Container>;
 
 export default Dashboard;

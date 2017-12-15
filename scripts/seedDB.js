@@ -16,7 +16,7 @@ const houseSeed = [
         owner: "Felix and Neil",
         address: "UT at Austin",
         layout: "",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         rooms: []
     }
 ];
@@ -24,27 +24,27 @@ const houseSeed = [
 const roomSeed = [
     {
         name: "Living_Room",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         sensors: []
     },
     {
         name: "Room_1",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         sensors: []
     },
     {
         name: "Room_2",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         sensors: []
     },
     {
         name: "Room_3",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         sensors: []
     },
     {
         name: "Room_4",
-        date: new Date(Date.now()),
+        created: new Date(Date.now()),
         sensors: []
     }
 ];
@@ -56,7 +56,8 @@ const sensorSeed = [
         position: "",
         value: 0,
         unit: "",
-        date: new Date(Date.now())
+        watt: 60,
+        created: new Date(Date.now())
     },
     {
         name: "R1_lamp_1",
@@ -64,7 +65,8 @@ const sensorSeed = [
         position: "",
         value: 0,
         unit: "",
-        date: new Date(Date.now())
+        watt: 60,
+        created: new Date(Date.now())
     },
     {
         name: "R2_lamp_1",
@@ -72,7 +74,8 @@ const sensorSeed = [
         position: "",
         value: 0,
         unit: "",
-        date: new Date(Date.now())
+        watt: 60,
+        created: new Date(Date.now())
     },
     {
         name: "R3_lamp_1",
@@ -80,7 +83,8 @@ const sensorSeed = [
         position: "",
         value: 0,
         unit: "",
-        date: new Date(Date.now())
+        watt: 60,
+        created: new Date(Date.now())
     },
     {
         name: "R4_lamp_1",
@@ -88,7 +92,8 @@ const sensorSeed = [
         position: "",
         value: 0,
         unit: "",
-        date: new Date(Date.now())
+        watt: 60,
+        created: new Date(Date.now())
     }
 ];
 
