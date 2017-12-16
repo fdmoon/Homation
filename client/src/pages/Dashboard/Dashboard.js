@@ -1,71 +1,122 @@
-import React from "react";
+import React, {Component} from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
+import { LayoutBox, StatBox } from "../../components/AdminLTE";
+import { ToggleBtn, DeleteBtn } from "../../components/Button";
 
-const Dashboard = () =>
-  <Container fluid>
-    <Row>
-      <Col size="md-12">
-        <Jumbotron>
-          <h1>Here is the main page of Homation!</h1>
-          <h1>
-            <span role="img" aria-label="Face With Rolling Eyes Emoji">
-              🙄
-            </span>
-          </h1>
-        </Jumbotron>
-      </Col>
-    </Row>
-    <Row>
-      <Col size="md-2">
-        <div class="small-box bg-aqua">
-          <div class="inner">
-            <p>TEMPERATURE</p>
-            <h3>50</h3>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </Col>
-      <Col size="md-2">
-        <div class="small-box bg-green">
-          <div class="inner">
-            <p>HUMIDITY</p>
-            <h3>53<sup style={{"font-size": "20px"}}>%</sup></h3>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </Col>
-      <Col size="md-2">
-        <div class="small-box bg-yellow">
-          <div class="inner">
-            <p>LIGHTS</p>
-            <h3>3</h3>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </Col>
-      <Col size="md-2">
-        <div class="small-box bg-red">
-          <div class="inner">
-            <p>DOORS</p>
-            <h3>3</h3>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </Col> 
-    </Row>
-  </Container>;
+import API from "../../utils/API";
+
+class Dashboard extends Component {
+    state = {
+        rooms: [],
+        isLocal: false
+    };
+
+    componentDidMount() {
+        this.collectRooms();
+    }
+
+    collectRooms = () => {
+        API.getRooms()
+            .then(res => {
+                console.log(res.data);
+                this.setState({ rooms: res.data });
+            })
+            .catch(err => console.log(err));
+    };
+
+    totalLights = () => {
+        var lights = 0;
+        for(let i=1; i<this.state.rooms.length; i++) {
+            for(let j=0; j<this.state.rooms[i].sensors.length; j++) {
+                if(this.state.rooms[i].sensors[j].type === "light") {
+                    lights += 1;
+                }
+            }
+        }
+        return lights;
+    }
+
+    totalDoors = () => {
+        var doors = 0;
+        for(let i=1; i<this.state.rooms.length; i++) {
+            for(let j=0; j<this.state.rooms[i].sensors.length; j++) {
+                if((this.state.rooms[i].sensors[j].type === "door") || (this.state.rooms[i].sensors[j].type === "window")) {
+                    doors += 1;
+                }
+            }
+        }
+        return doors;
+    }
+
+    handleToggleSwitch = (id, value) => {
+        console.log(id + ":" + value);
+    }
+
+    showLightsController = () => {
+        var lightArray = [];
+        for(let i=1; i<this.state.rooms.length; i++) {
+            let tempArray = this.state.rooms[i].sensors.filter(item => item.type === "light");
+            lightArray = lightArray.concat(tempArray);
+        }
+        return ( 
+            lightArray.map(light => (
+                <ToggleBtn name={light.name}>
+                    {light.description}
+                </ToggleBtn>
+            ))
+        );
+    }
+
+    render() {
+        return (
+            <Container fluid>
+                <Row>
+                    <Col size="md-6">&nbsp;</Col>
+                    <Col size="md-6">
+                        <Row>
+                            <LayoutBox title="Basic Information">
+                                <Col size="md-3">
+                                    <StatBox bgColor="bg-aqua" name="TEMPERATURE" ionName="ion-thermometer">
+                                        <h3>{this.state.rooms.length > 0 ? this.state.rooms[0].sensors[0].value : 0}</h3>
+                                    </StatBox>
+                                </Col>
+                                <Col size="md-3">
+                                    <StatBox bgColor="bg-green" name="HUMIDITY" ionName="ion-waterdrop">
+                                        <h3>{this.state.rooms.length > 0 ? this.state.rooms[0].sensors[2].value : 0}<sup style={{"font-size": "20px"}}>%</sup></h3>
+                                    </StatBox>
+                                </Col>
+                                <Col size="md-3">
+                                    <StatBox bgColor="bg-yellow" name="LIGHTS" ionName="ion-ios-lightbulb-outline">
+                                        <h3>{this.totalLights()}</h3>
+                                    </StatBox>
+                                </Col>
+                                <Col size="md-3">
+                                    <StatBox bgColor="bg-red" name="DOORS & WINDOWS" ionName="ion-ios-locked-outline">
+                                        <h3>{this.totalDoors()}</h3>
+                                    </StatBox>
+                                </Col> 
+                            </LayoutBox>
+                        </Row>
+                        <Row>   
+                            <Col size="md-6">
+                                <LayoutBox title="Outdoor">
+                                </LayoutBox>
+                            </Col>
+                            <Col size="md-6">
+                                <LayoutBox title="Controller">
+                                    <Col size="md-12">
+                                        {this.showLightsController()}
+                                    </Col> 
+                                </LayoutBox>
+                            </Col> 
+                        </Row>
+                        
+                    </Col>
+                </Row>
+            </Container>
+        );
+    }
+}
 
 export default Dashboard;
+

@@ -13,86 +13,146 @@ mongoose.connect(
 
 const houseSeed = [
     {
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e32197"),
         owner: "Felix and Neil",
         address: "UT at Austin",
         layout: "",
         created: new Date(Date.now()),
-        rooms: []
+        rooms: [
+            mongoose.Types.ObjectId("5a34000857456b3288e32198"), 
+            mongoose.Types.ObjectId("5a34000857456b3288e32199"), 
+            mongoose.Types.ObjectId("5a34000857456b3288e3219a"), 
+            mongoose.Types.ObjectId("5a34000857456b3288e3219b"), 
+            mongoose.Types.ObjectId("5a34000857456b3288e3219c")
+        ]
     }
 ];
 
 const roomSeed = [
     {
-        name: "Living_Room",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e32198"),
+        name: "Overview",
         created: new Date(Date.now()),
-        sensors: []
+        sensors: [
+            mongoose.Types.ObjectId("5a34000857456b3288e321a2"),
+            mongoose.Types.ObjectId("5a34000857456b3288e321a3"),
+            mongoose.Types.ObjectId("5a34000857456b3288e321a4")
+        ]
     },
     {
-        name: "Room_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e32199"),
+        name: "Room-1",
         created: new Date(Date.now()),
-        sensors: []
+        sensors: [
+            mongoose.Types.ObjectId("5a34000857456b3288e3219d"),
+            mongoose.Types.ObjectId("5a34000857456b3288e3219e")
+        ]
     },
     {
-        name: "Room_2",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219a"),
+        name: "Room-2",
         created: new Date(Date.now()),
-        sensors: []
+        sensors: [
+            mongoose.Types.ObjectId("5a34000857456b3288e3219f")
+        ]
     },
     {
-        name: "Room_3",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219b"),
+        name: "Room-3",
         created: new Date(Date.now()),
-        sensors: []
+        sensors: [
+            mongoose.Types.ObjectId("5a34000857456b3288e321a0")
+        ]
     },
     {
-        name: "Room_4",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219c"),
+        name: "Room-4",
         created: new Date(Date.now()),
-        sensors: []
+        sensors: [
+            mongoose.Types.ObjectId("5a34000857456b3288e321a1")
+        ]
     }
 ];
 
 const sensorSeed = [
     {
-        name: "LR_lamp_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219d"),
+        name: "room1-light-m",
         type: "light",
-        position: "",
+        description: "Room-1 Light (Main)",
         value: 0,
-        unit: "",
+        unit: "ea",
         watt: 60,
         created: new Date(Date.now())
     },
     {
-        name: "R1_lamp_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219e"),
+        name: "room1-light-s",
         type: "light",
-        position: "",
+        description: "Room-1 Light (Sub)",
         value: 0,
-        unit: "",
+        unit: "ea",
         watt: 60,
         created: new Date(Date.now())
     },
     {
-        name: "R2_lamp_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e3219f"),
+        name: "room2-light",
         type: "light",
-        position: "",
+        description: "Room-2 Light",
         value: 0,
-        unit: "",
+        unit: "ea",
         watt: 60,
         created: new Date(Date.now())
     },
     {
-        name: "R3_lamp_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e321a0"),
+        name: "room3-light",
         type: "light",
-        position: "",
+        description: "Room-3 Light",
         value: 0,
-        unit: "",
+        unit: "ea",
         watt: 60,
         created: new Date(Date.now())
     },
     {
-        name: "R4_lamp_1",
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e321a1"),
+        name: "room4-light",
         type: "light",
-        position: "",
+        description: "Room-4 Light",
         value: 0,
-        unit: "",
+        unit: "ea",
         watt: 60,
+        created: new Date(Date.now())
+    },
+    {
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e321a2"),
+        name: "indoor-temp",
+        type: "temperature",
+        description: "Indoor Temperature",
+        value: 0,
+        unit: "F",
+        watt: 0,
+        created: new Date(Date.now())
+    },
+    {
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e321a3"),
+        name: "outdoor-temp",
+        type: "temperature",
+        description: "Outdoor Temperature",
+        value: 0,
+        unit: "F",
+        watt: 0,
+        created: new Date(Date.now())
+    },
+    {
+        "_id" : mongoose.Types.ObjectId("5a34000857456b3288e321a4"),
+        name: "indoor-humid",
+        type: "humidity",
+        description: "Indoor Humidity",
+        value: 0,
+        unit: "%",
+        watt: 0,
         created: new Date(Date.now())
     }
 ];
