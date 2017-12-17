@@ -7,10 +7,16 @@
     padding-bottom: 20px !important;
 }
 
+.td-item {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+}
+
 .td-center {
     text-align: center;
 }
 
 .st-text {
-    padding: 3px;
+    padding: 5px 10px;
 }
+

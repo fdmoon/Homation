@@ -1,14 +1,12 @@
 import React from "react";
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
 export const ToggleBtn = props => 
-    <div className="checkbox td-center">
+    <div className="checkbox disabled">
         <label>
             {
-                props.initval == "0" ? 
-                    <input type="checkbox" id={props.id} data-toggle="toggle" data-size="small" /> : 
-                    <input type="checkbox" id={props.id} data-toggle="toggle" data-size="small" checked />
+                props.checked === 0 ? 
+                    <input type="checkbox" data-toggle="toggle" data-size="small" data-onstyle="danger" disabled /> : 
+                    <input type="checkbox" data-toggle="toggle" data-size="small" data-onstyle="danger" checked disabled />
             }
         </label>
     </div>;

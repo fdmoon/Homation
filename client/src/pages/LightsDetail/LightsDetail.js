@@ -6,11 +6,18 @@ import API from "../../utils/API";
 
 class LightsDetail extends Component {
     state = {
-        lights: [],
+        timerId: 0,
+        lights: []
     };
 
     componentDidMount() {
         this.loadLights();
+        let timerId = setInterval(() => this.loadLights(), 1500);
+        this.setState({ timerId: timerId });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.timerId);
     }
 
     loadLights = () => {
@@ -22,13 +29,22 @@ class LightsDetail extends Component {
             .catch(err => console.log(err));
     };
 
+    handleControl = (id, toggle) => {
+        API.updateSensor(id, { value: toggle ? 1 : 0 })
+            .then(res => {
+                console.log(res.data);
+                
+            })
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <Container>
                 <Row>
                     <Col size="md-12">
-                        <CtrlTable title="Lights Status" args={this.state.lights}>
-                        </CtrlTable>                        
+                        <CtrlTable title="Lights Status" args={this.state.lights} handleControl={this.handleControl}>
+                        </CtrlTable>
                     </Col>
                 </Row>
             </Container>

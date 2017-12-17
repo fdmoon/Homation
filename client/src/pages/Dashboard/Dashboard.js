@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { LayoutBox, StatBox } from "../../components/AdminLTE";
-import { ToggleBtn } from "../../components/Button";
 
 import API from "../../utils/API";
 
@@ -11,8 +10,11 @@ class Dashboard extends Component {
             temps: [],
             humids: [],
             lights: [],
+            onlights: 0,
             doors: [],
-            windows: []
+            ondoors: 0,
+            windows: [],
+            onwindows: 0
         }
     };
 
@@ -31,15 +33,13 @@ class Dashboard extends Component {
                     temps: [],
                     humids: [],
                     lights: [],
+                    onlights: 0,
                     doors: [],
-                    windows: []
+                    ondoors: 0,
+                    windows: [],
+                    onwindows: 0
                 };
 
-                sensors.temps = [];
-                sensors.humids = [];
-                sensors.lights = [];
-                sensors.doors = [];
-                sensors.windows = [];
                 for(let i=0; i<oneHouse.sensors.length; i++) {
                     if(oneHouse.sensors[i].type === "temperature") {
                         sensors.temps.push(oneHouse.sensors[i]);
@@ -49,12 +49,21 @@ class Dashboard extends Component {
                     }
                     else if(oneHouse.sensors[i].type === "light") {
                         sensors.lights.push(oneHouse.sensors[i]);
+                        if(oneHouse.sensors[i].value === 1) {
+                            sensors.onlights += 1;
+                        }
                     }
                     else if(oneHouse.sensors[i].type === "door") {
                         sensors.doors.push(oneHouse.sensors[i]);
+                        if(oneHouse.sensors[i].value === 1) {
+                            sensors.ondoors += 1;
+                        }
                     }
                     else if(oneHouse.sensors[i].type === "window") {
                         sensors.windows.push(oneHouse.sensors[i]);
+                        if(oneHouse.sensors[i].value === 1) {
+                            sensors.onwindows += 1;
+                        }
                     }
                 }
                 
@@ -98,12 +107,15 @@ class Dashboard extends Component {
                                 </Col>
                                 <Col size="md-3">
                                     <StatBox bgColor="bg-yellow" name="LIGHTS" ionName="ion-ios-lightbulb-outline" link="/lights">
-                                        <h3>{this.state.sensors.lights.length}</h3>
+                                        <h3>{this.state.sensors.lights.length}<sup style={{"fontSize": "20px"}}>({this.state.sensors.onlights})</sup></h3>
                                     </StatBox>
                                 </Col>
                                 <Col size="md-3">
                                     <StatBox bgColor="bg-red" name="DOORS & WINDOWS" ionName="ion-ios-locked-outline" link="/doors">
-                                        <h3>{this.state.sensors.doors.length + this.state.sensors.windows.length}</h3>
+                                        <h3>
+                                            {this.state.sensors.doors.length + this.state.sensors.windows.length}
+                                            <sup style={{"fontSize": "20px"}}>({this.state.sensors.ondoors + this.state.sensors.onwindows})</sup>
+                                        </h3>
                                     </StatBox>
                                 </Col> 
                             </LayoutBox>

@@ -16,25 +16,29 @@ export const CtrlTable = props =>
                         <th>Name</th>
                         <th>Descriptioin</th>
                         <th className="th-center" style={{"width": "250px"}}>Current Status</th>
-                        <th className="th-center">Control</th>
+                        <th className="th-center">Control (Toggle)</th>
                     </tr>
                 </thead>
                 <tbody>
                 {
                     props.args.map((item, index) => {
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td className="td-text td-center">{index + 1}</td>
                                 <td className="td-text">{item.name}</td>
                                 <td className="td-text">{item.description}</td>
                                 {
-                                    item.value === 0 ? 
-                                        <td className="td-text td-center"><span className="bg-red st-text">OFF</span></td> : 
-                                        <td className="td-text td-center"><span className="bg-green st-text">ON</span></td>
+                                    item.value === 0 ?
+                                        <td className="td-text td-center"><span className="st-text" style={{"backgroundColor": "#f2ece9"}}>OFF</span></td> :
+                                        <td className="td-text td-center"><span className="bg-red st-text"> ON </span></td>
                                 }
-                                <td>
-                                    <ToggleBtn id={item._id} initval={item.value}>
-                                    </ToggleBtn>
+                                {/* <td className="td-center">
+                                    <ToggleBtn checked={item.value} />
+                                </td> */}
+                                <td className="td-item td-center">
+                                    <a id={item._id} className="btn btn-primary" onClick={() => props.handleControl(item._id, !item.value)}>
+                                        <i className="fa fa-refresh fa-1x"></i>
+                                    </a>
                                 </td>
                             </tr>
                         );

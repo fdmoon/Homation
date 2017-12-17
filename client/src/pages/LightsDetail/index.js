@@ -1,1 +1,1 @@
-export { default } from "./LightsDetail.js";
+export { default } from "./LightsDetail";

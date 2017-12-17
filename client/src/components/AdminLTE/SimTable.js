@@ -1,4 +1,5 @@
 import React from "react";
+import { ToggleBtn } from "../Button";
 import "./style.css"
 
 export const SimTable = props => 
@@ -22,15 +23,18 @@ export const SimTable = props =>
                     props.args.map((item, index) => {
 
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <td className="td-text td-center">{index + 1}</td>
                                 <td className="td-text">{item.name}</td>
                                 <td className="td-text">{item.description}</td>
                                 {
-                                    item.value === 0 ? 
-                                        <td className="td-text td-center"><span className="bg-red st-text">OFF</span></td> :
-                                        <td className="td-text td-center"><span className="bg-green st-text">ON</span></td>
+                                    item.value === 0 ?
+                                        <td className="td-text td-center"><span className="st-text" style={{"backgroundColor": "#f2ece9"}}>OFF</span></td> :
+                                        <td className="td-text td-center"><span className="bg-red st-text">ON</span></td>
                                 }
+                                {/* <td className="td-center">
+                                    <ToggleBtn checked={item.value} />
+                                </td> */}
                             </tr>
                         );
                     })
