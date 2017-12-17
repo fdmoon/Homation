@@ -23,28 +23,6 @@ export default {
         return axios.delete("/api/houses/" + id);
     },
 
-// *** Room ***
-    // Gets all rooms
-    getRooms: function() {
-        return axios.get("/api/rooms");
-    },
-    // Gets the room with the given id
-    getRoom: function(id) {
-        return axios.get("/api/rooms/" + id);
-    },
-    // Saves a room to the database
-    saveRoom: function(roomData) {
-        return axios.post("/api/rooms", roomData);
-    },
-    // Updates the room with the given id
-    updateRoom: function(id, updateData) {
-        return axios.put("/api/rooms/" + id, updateData);
-    },    
-    // Deletes the room with the given id
-    deleteRoom: function(id) {
-        return axios.delete("/api/rooms/" + id);
-    },
-
 // *** Sensor ***
     // Gets all sensors
     getSensors: function() {
@@ -53,6 +31,10 @@ export default {
     // Gets the sensor with the given id
     getSensor: function(id) {
         return axios.get("/api/sensors/" + id);
+    },
+    // Gets the sensors with the given type
+    getSensorsByType: function(type) {
+        return axios.get("/api/sensors/type/" + type);
     },
     // Saves a sensor to the database
     saveSensor: function(sensorData) {

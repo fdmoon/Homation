@@ -9,6 +9,6 @@ export const StatBox = props =>
         <div className="icon">
             <i className={`ion ${props.ionName}`}></i>
         </div>
-        <a href="#" className="small-box-footer">More info <i className="fa fa-arrow-circle-right"></i></a>
+        <a href={props.link} className="small-box-footer">More info <i className="fa fa-arrow-circle-right"></i></a>
     </div>;
 
