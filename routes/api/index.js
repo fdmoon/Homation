@@ -1,14 +1,12 @@
 const router = require("express").Router();
 const houseRoutes = require("./houses");
 const sensorRoutes = require("./sensors");
-const randomRoutes = require("./randoms");
+const otherRoutes = require("./others");
 
-// routes to access database
+// routes to access data
 router.use("/houses", houseRoutes);
 router.use("/sensors", sensorRoutes);
-
-// routes to create random values
-router.use("/randoms", randomRoutes);
+router.use("/others", otherRoutes);
 
 module.exports = router;
 

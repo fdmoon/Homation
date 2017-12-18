@@ -26,7 +26,17 @@ mongoose.connect(
 );
 
 // Start the API server
-app.listen(PORT, function() {
-    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+mongoose.connection.on('error', function(err) {
+    console.log("Mongoose Error: " + err);
+})
+
+mongoose.connection.on('open', function() {
+    console.log("Mongoose connection successful.");
+
+    app.listen(PORT, function() {
+        console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+    });
+
+    require("./controllers/weatherController").load();
 });
 

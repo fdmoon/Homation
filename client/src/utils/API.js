@@ -47,5 +47,12 @@ export default {
     // Deletes the sensor with the given id
     deleteSensor: function(id) {
         return axios.delete("/api/sensors/" + id);
-    }    
+    },
+
+// *** Weather ***
+    // Gets weather data
+    getWeather: function() {
+        return axios.get("/api/others/weather");
+    }
 };
+

@@ -3,7 +3,7 @@ import { ToggleBtn } from "../Button";
 import "./style.css"
 
 export const SimTable = props => 
-    <div className="box">
+    <div className="box box-ex">
         <div className="box-header with-border">
             <h3 className="box-title">{props.title}</h3>
         </div>

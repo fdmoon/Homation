@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import { LayoutBox, StatBox } from "../../components/AdminLTE";
+import { LayoutBox, StatBox, InfoBox } from "../../components/AdminLTE";
 
 import API from "../../utils/API";
 
 class Dashboard extends Component {
     state = {
         sensors: {
-            temps: [],
+            thermos: [],
             humids: [],
             lights: [],
             onlights: 0,
@@ -15,11 +15,13 @@ class Dashboard extends Component {
             ondoors: 0,
             windows: [],
             onwindows: 0
-        }
+        },
+        weather: {}
     };
 
     componentDidMount() {
         this.loadHouseSensors();
+        this.loadWeather();
     }
 
     loadHouseSensors = () => {
@@ -30,7 +32,7 @@ class Dashboard extends Component {
                 let oneHouse = res.data[0];
 
                 let sensors = {
-                    temps: [],
+                    thermos: [],
                     humids: [],
                     lights: [],
                     onlights: 0,
@@ -42,7 +44,7 @@ class Dashboard extends Component {
 
                 for(let i=0; i<oneHouse.sensors.length; i++) {
                     if(oneHouse.sensors[i].type === "temperature") {
-                        sensors.temps.push(oneHouse.sensors[i]);
+                        sensors.thermos.push(oneHouse.sensors[i]);
                     }
                     else if(oneHouse.sensors[i].type === "humidity") {
                         sensors.humids.push(oneHouse.sensors[i]);
@@ -72,36 +74,36 @@ class Dashboard extends Component {
             .catch(err => console.log(err));
     };
 
-    // showLightsController = () => {
-    //     var lightArray = [];
-    //     for(let i=1; i<this.state.rooms.length; i++) {
-    //         let tempArray = this.state.rooms[i].sensors.filter(item => item.type === "light");
-    //         lightArray = lightArray.concat(tempArray);
-    //     }
-    //     return ( 
-    //         lightArray.map(light => (
-    //             <ToggleBtn name={light.name}>
-    //                 {light.description}
-    //             </ToggleBtn>
-    //         ))
-    //     );
-    // }
+    loadWeather = () => {
+        API.getWeather()
+            .then(res => {
+                console.log(res.data);
+                if(res.data.length > 0) {
+                    this.setState({ weather: res.data[0] });
+                }
+            })
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="md-6">&nbsp;</Col>
+                    <Col size="md-1">&nbsp;</Col>
+                    <Col size="md-3">
+                        <img src="/img/smarthome_img.png" style={{"width": "100%"}}/>
+                    </Col>
+                    <Col size="md-1">&nbsp;</Col>
                     <Col size="md-6">
                         <Row>
                             <LayoutBox title="Basic Information">
                                 <Col size="md-3">
-                                    <StatBox bgColor="bg-aqua" name="TEMPERATURE" ionName="ion-thermometer" link="#">
-                                        <h3>{this.state.sensors.temps.length > 0 ? this.state.sensors.temps[0].value : 0}<sup style={{"fontSize": "20px"}}>&deg;F</sup></h3>
+                                    <StatBox bgColor="bg-aqua" name="TEMPERATURE" ionName="ion-thermometer" link="/thermos">
+                                        <h3>{this.state.sensors.thermos.length > 0 ? this.state.sensors.thermos[0].value : 0}<sup style={{"fontSize": "20px"}}>&deg;F</sup></h3>
                                     </StatBox>
                                 </Col>
                                 <Col size="md-3">
-                                    <StatBox bgColor="bg-green" name="HUMIDITY" ionName="ion-waterdrop" link="#">
+                                    <StatBox bgColor="bg-green" name="HUMIDITY" ionName="ion-waterdrop" link="/humids">
                                         <h3>{this.state.sensors.humids.length > 0 ? this.state.sensors.humids[0].value : 0}<sup style={{"fontSize": "20px"}}>%</sup></h3>
                                     </StatBox>
                                 </Col>
@@ -120,21 +122,16 @@ class Dashboard extends Component {
                                 </Col> 
                             </LayoutBox>
                         </Row>
-                        <Row>   
-                            <Col size="md-6">
-                                <LayoutBox title="Outdoor">
-                                </LayoutBox>
-                            </Col>
-                            <Col size="md-6">
-                                <LayoutBox title="Controller">
-                                    <Col size="md-12">
-                                        {/* {this.showLightsController()} */}
-                                    </Col> 
-                                </LayoutBox>
-                            </Col> 
+                        <Row>
+                            <LayoutBox title={`Weather at ${this.state.weather.name} (${this.state.weather.date} ${this.state.weather.day} ${this.state.weather.observationtime})`}>
+                                <Col size="md-12">
+                                    <InfoBox weather={this.state.weather} />
+                                </Col>
+                            </LayoutBox>
                         </Row>
                         
                     </Col>
+                    <Col size="md-1">&nbsp;</Col>
                 </Row>
             </Container>
         );

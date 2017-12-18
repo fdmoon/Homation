@@ -1,6 +1,10 @@
 const router = require("express").Router();
+const weatherController = require("../../controllers/weatherController");
 
-// Matches routes starting with "/api/randoms"
+// Matches routes starting with "/api/others"
+
+router.route("/weather")
+    .get(weatherController.readDB);
 
 router.route("/graph").get(function(req, res) {
     const data = [];

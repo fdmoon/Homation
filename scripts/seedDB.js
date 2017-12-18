@@ -180,6 +180,21 @@ const sensorSeed = [
     }
 ];
 
+const weatherSeed = [
+    {
+        name: "",
+        date: "",
+        day: "",
+        observationtime: "",
+        temperature: "",
+        skytext: "",
+        humidity: "",
+        winddisplay: "",
+        imageUrl: "",
+        forecast: []
+    }
+];
+
 db.House
     .remove({})
     .then(() => db.House.collection.insertMany(houseSeed))
@@ -197,6 +212,18 @@ db.Sensor
     .then(() => db.Sensor.collection.insertMany(sensorSeed))
     .then(data => {
         console.log("[Sensor] " + data.insertedIds.length + " records inserted!");
+        // process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+db.Weather
+    .remove({})
+    .then(() => db.Weather.collection.insertMany(weatherSeed))
+    .then(data => {
+        console.log("[Weather] " + data.insertedIds.length + " records inserted!");
         process.exit(0);
     })
     .catch(err => {

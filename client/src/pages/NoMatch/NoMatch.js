@@ -3,19 +3,28 @@ import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 
 const NoMatch = () =>
-  <Container fluid>
-    <Row>
-      <Col size="md-12">
-        <Jumbotron>
-          <h1>404 Page Not Found</h1>
-          <h1>
-            <span role="img" aria-label="Face With Rolling Eyes Emoji">
-              🙄
-            </span>
-          </h1>
-        </Jumbotron>
-      </Col>
-    </Row>
-  </Container>;
+    <Container fluid    >
+        <Row>
+            <Col size="md-12">
+                <Jumbotron>
+                    <section className="content">
+                        <div className="error-page">
+                            <h2 className="headline text-yellow"> 404</h2>
+
+                            <div className="error-content" style={{"paddingLeft": "50px"}}>
+                                <h3><i className="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+
+                                <p>
+                                    We could not find the page you were looking for.
+                                    Meanwhile, you may <a href="/">return to dashboard</a> or try using the search form.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </Jumbotron>
+            </Col>
+        </Row>
+    </Container>;
 
 export default NoMatch;
+
