@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { findDOMNode } from "react-dom";
+// import { findDOMNode } from "react-dom";
 // import $ from "jquery";
 import ToggleSwitch from '@trendmicro/react-toggle-switch';
 
 // Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-toggle-switch/dist/react-toggle-switch.css';
+import "./style.css"
 
 class ToggleBtn extends Component {
     // componentDidMount() {
@@ -19,7 +20,7 @@ class ToggleBtn extends Component {
     render() {
         return (
             <div className="checkbox">
-                <span style={{"marginRight": "10px"}}>OFF</span>
+                <span className="unit" style={{"marginRight": "10px"}}>OFF</span>
                 <ToggleSwitch
                     checked={this.state.checked}
                     onChange={(event) => {
@@ -28,7 +29,7 @@ class ToggleBtn extends Component {
                         this.props.handleControl(this.props.id, newChecked);
                     }}
                 />
-                <span>ON</span>
+                <span className="unit">ON</span>
             </div>
         );
     }

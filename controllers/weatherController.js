@@ -83,7 +83,7 @@ const weatherController = {
     }
 };
 
-var timerId = setInterval(() => weatherController.load(), 60*1000);	// cf. clearInterval(timerId);
+var timerId = setInterval(() => weatherController.load(), 300*1000);	// cf. clearInterval(timerId);
 
 module.exports = weatherController;
 

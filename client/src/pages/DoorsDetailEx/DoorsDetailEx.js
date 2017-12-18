@@ -28,7 +28,7 @@ class DoorsDetailEx extends Component {
     loadDoors = () => {
         API.getSensorsByType("door")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState((prevState, props) => { 
                     return { doors: res.data };
                 });
@@ -39,7 +39,7 @@ class DoorsDetailEx extends Component {
     loadWindows = () => {
         API.getSensorsByType("window")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState((prevState, props) => { 
                     return { windows: res.data };
                 }); 
@@ -50,7 +50,7 @@ class DoorsDetailEx extends Component {
     handleControl = (id, checked) => {
         API.updateSensor(id, { value: checked ? 1 : 0 })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 
             })
             .catch(err => console.log(err));

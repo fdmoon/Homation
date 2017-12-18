@@ -27,7 +27,7 @@ class Dashboard extends Component {
     loadHouseSensors = () => {
         API.getHouses()
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
 
                 let oneHouse = res.data[0];
 
@@ -77,7 +77,7 @@ class Dashboard extends Component {
     loadWeather = () => {
         API.getWeather()
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.length > 0) {
                     this.setState({ weather: res.data[0] });
                 }
@@ -91,7 +91,7 @@ class Dashboard extends Component {
                 <Row>
                     <Col size="md-1">&nbsp;</Col>
                     <Col size="md-3">
-                        <img src="/img/smarthome_img.png" style={{"width": "100%"}}/>
+                        <img src="/img/smarthome_img.png" alt="" style={{"width": "100%"}}/>
                     </Col>
                     <Col size="md-1">&nbsp;</Col>
                     <Col size="md-6">
