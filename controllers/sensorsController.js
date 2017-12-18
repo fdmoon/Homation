@@ -15,10 +15,18 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findByType: function(req, res) {
+        db.Sensor
+            .find(req.query)
+            .where("type").equals(req.params.type)
+            .sort({ _id: 1 })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     create: function(req, res) {
         db.Sensor
             .create(req.body)
-            .then(dbModel => db.Room.findOneAndUpdate({ _id: req.params.id }, { $push: { sensors: dbModel._id } }, { new: true }))
+            .then(dbModel => db.House.findOneAndUpdate({ _id: req.params.id }, { $push: { sensors: dbModel._id } }, { new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
@@ -32,7 +40,7 @@ module.exports = {
         db.Sensor
             .findById({ _id: req.params.id })
             .then(dbModel => dbModel.remove())
-            .then(dbModel => db.Room.findOneAndUpdate({ _id: req.body.id }, { $pull: { notes: dbModel._id } }, { new: true }))
+            .then(dbModel => db.House.findOneAndUpdate({ _id: req.body.id }, { $pull: { notes: dbModel._id } }, { new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }

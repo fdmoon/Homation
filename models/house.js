@@ -6,10 +6,10 @@ const houseSchema = new Schema({
     address: { type: String, required: true },
     layout: String,
     created: { type: Date, default: Date.now },
-    rooms: [
+    sensors: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Room"
+            ref: "Sensor"
         }
     ]
 });

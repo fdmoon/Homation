@@ -13,5 +13,10 @@ router
     .put(sensorsController.update)
     .delete(sensorsController.remove);
 
+// Matches with "/api/sensors/type/:type"
+router
+    .route("/type/:type")
+    .get(sensorsController.findByType);
+
 module.exports = router;
 
