@@ -13,6 +13,15 @@ class DoorsDetail extends Component {
     componentDidMount() {
         this.loadDoors();
         this.loadWindows();
+        let timerId = setInterval(() => {
+            this.loadDoors();
+            this.loadWindows();
+        }, 1500);
+        this.setState({ timerId: timerId });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.timerId);
     }
 
     loadDoors = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import { ToggleBtn } from "../Button";
 import "./style.css"
 
 export const SimTable = props => 
@@ -12,10 +11,10 @@ export const SimTable = props =>
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th className="th-center" style={{"width": "40px"}}>#</th>
+                        <th className="th-center" style={{"width": "50px"}}>#</th>
                         <th>Name</th>
-                        <th>Descriptioin</th>
-                        <th className="th-center" style={{"width": "130px"}}>Current Status</th>
+                        <th style={{"width": "200px"}}>Descriptioin</th>
+                        <th className="th-center">Current Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +31,6 @@ export const SimTable = props =>
                                         <td className="td-text td-center"><span className="st-text" style={{"backgroundColor": "#f2ece9"}}>OFF</span></td> :
                                         <td className="td-text td-center"><span className="bg-red st-text">ON</span></td>
                                 }
-                                {/* <td className="td-center">
-                                    <ToggleBtn checked={item.value} />
-                                </td> */}
                             </tr>
                         );
                     })

@@ -1,5 +1,5 @@
 import React from "react";
-import { ToggleBtn } from "../Button";
+import ToggleBtn from "../ToggleBtn";
 import "./style.css"
 
 export const CtrlTable = props => 
@@ -12,11 +12,11 @@ export const CtrlTable = props =>
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th className="th-center" style={{"width": "40px"}}>#</th>
+                        <th className="th-center" style={{"width": "50px"}}>#</th>
                         <th>Name</th>
                         <th>Descriptioin</th>
-                        <th className="th-center" style={{"width": "250px"}}>Current Status</th>
-                        <th className="th-center">Control (Toggle)</th>
+                        <th className="th-center">Current Status</th>
+                        <th className="th-center" style={{"width": "200px"}}>Control</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,14 +32,14 @@ export const CtrlTable = props =>
                                         <td className="td-text td-center"><span className="st-text" style={{"backgroundColor": "#f2ece9"}}>OFF</span></td> :
                                         <td className="td-text td-center"><span className="bg-red st-text"> ON </span></td>
                                 }
-                                {/* <td className="td-center">
-                                    <ToggleBtn checked={item.value} />
-                                </td> */}
-                                <td className="td-item td-center">
+                                <td className="td-center">
+                                    <ToggleBtn id={item._id} checked={item.value} handleControl={props.handleControl} />
+                                </td>
+                                {/* <td className="td-item td-center">
                                     <a id={item._id} className="btn btn-primary" onClick={() => props.handleControl(item._id, !item.value)}>
                                         <i className="fa fa-refresh fa-1x"></i>
                                     </a>
-                                </td>
+                                </td> */}
                             </tr>
                         );
                     })

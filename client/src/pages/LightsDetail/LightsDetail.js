@@ -27,13 +27,12 @@ class LightsDetail extends Component {
                 this.setState({ lights: res.data });
             })
             .catch(err => console.log(err));
-    };
+    };  
 
-    handleControl = (id, toggle) => {
-        API.updateSensor(id, { value: toggle ? 1 : 0 })
+    handleControl = (id, checked) => {
+        API.updateSensor(id, { value: checked ? 1 : 0 })
             .then(res => {
                 console.log(res.data);
-                
             })
             .catch(err => console.log(err));
     }

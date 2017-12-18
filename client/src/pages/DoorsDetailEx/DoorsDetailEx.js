@@ -47,8 +47,8 @@ class DoorsDetailEx extends Component {
             .catch(err => console.log(err));
     };
 
-    handleControl = (id, toggle) => {
-        API.updateSensor(id, { value: toggle ? 1 : 0 })
+    handleControl = (id, checked) => {
+        API.updateSensor(id, { value: checked ? 1 : 0 })
             .then(res => {
                 console.log(res.data);
                 
@@ -60,12 +60,14 @@ class DoorsDetailEx extends Component {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="md-6">
+                    <Col size="md-1">&nbsp;</Col>
+                    <Col size="md-5">
                         <CtrlTable title="Doors Status" args={this.state.doors} handleControl={this.handleControl} />
                     </Col>
-                    <Col size="md-6">
+                    <Col size="md-5">
                         <CtrlTable title="Windows Status" args={this.state.windows} handleControl={this.handleControl} />
                     </Col>
+                    <Col size="md-1">&nbsp;</Col>
                 </Row>
             </Container>
         );
