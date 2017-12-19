@@ -204,7 +204,7 @@ class Dashboard extends Component {
                 <Row>
                     <Col size="md-6">
                         <div style={{"textAlign": "center", "marginTop": "10px"}}>
-                            <img src="/img/home-4room-plans.jpg" alt="" style={{"width": "60%"} }/>
+                            <img src="/img/home-4room-plans.jpg" alt="" style={{"width": "55%"} }/>
                             <img src="/img/smarthome_img.png" alt="" style={{"width": "30%"}} />
                         </div>
                     </Col>
@@ -247,10 +247,14 @@ class Dashboard extends Component {
                 </Row>
                 <Row>
                     <Col size="md-6">
-                        <MixedChart chartData={this.state.usedPowerChart} />
+                        <LayoutBox title={this.state.usedPowerChart.title}>
+                            <MixedChart chartData={this.state.usedPowerChart} />
+                        </LayoutBox>
                     </Col>
                     <Col size="md-6">
-                        <MixedChart chartData={this.state.forecastChart} />
+                        <LayoutBox title={this.state.forecastChart.title}>
+                            <MixedChart chartData={this.state.forecastChart} />
+                        </LayoutBox>
                     </Col>
                 </Row>
             </Container>

@@ -3,16 +3,20 @@ import { Col, Row, Container } from "../../components/Grid";
 
 const Carousel = () => {
     let imagelist = [
-        ["http://placehold.it/900x500/39CCCC/ffffff&text=This+is+Hotomation.", "First slide"],
-        ["http://placehold.it/900x500/3c8dbc/ffffff&text=You+can+protect+your+home.", "Second slide"],
-        ["http://placehold.it/900x500/f39c12/ffffff&text=You+can+control+your+home.", "Third slide"]
-
+        ["/img/pptx/page-1.png", ""],
+        ["/img/pptx/page-2.png", ""],
+        ["/img/pptx/page-3.png", ""],
+        ["/img/pptx/page-4.png", ""],
+        ["/img/pptx/page-5.png", ""],
+        ["/img/pptx/page-6.png", ""],
+        ["/img/pptx/page-7.png", ""]
     ];
 
     return (
         <Container>
             <Row>
-                <Col size="md-12">
+                <Col size="md-1">&nbsp;</Col>
+                <Col size="md-10">
                     <div className="box box-solid">
                         {/* <div className="box-header with-border">
                             <h3 className="box-title">Carousel</h3>
@@ -49,6 +53,7 @@ const Carousel = () => {
                         </div>
                     </div>
                 </Col>
+                <Col size="md-1">&nbsp;</Col>
             </Row>
         </Container>
     );
