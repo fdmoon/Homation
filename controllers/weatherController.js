@@ -40,7 +40,7 @@ const weatherController = {
                             humidity: result[0].current.humidity,
                             winddisplay: result[0].current.winddisplay,
                             imageUrl: result[0].current.imageUrl,
-                            forecast: result[0].current.forecast
+                            forecast: result[0].forecast
                         };
                 
                         db.Weather
@@ -83,7 +83,7 @@ const weatherController = {
     }
 };
 
-var timerId = setInterval(() => weatherController.load(), 60*1000);	// cf. clearInterval(timerId);
+var timerId = setInterval(() => weatherController.load(), 300*1000);	// cf. clearInterval(timerId);
 
 module.exports = weatherController;
 

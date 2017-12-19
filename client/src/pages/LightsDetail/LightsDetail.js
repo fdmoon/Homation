@@ -23,7 +23,7 @@ class LightsDetail extends Component {
     loadLights = () => {
         API.getSensorsByType("light")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({ lights: res.data });
             })
             .catch(err => console.log(err));
@@ -32,7 +32,7 @@ class LightsDetail extends Component {
     handleControl = (id, checked) => {
         API.updateSensor(id, { value: checked ? 1 : 0 })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
             })
             .catch(err => console.log(err));
     }

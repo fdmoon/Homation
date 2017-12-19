@@ -6,6 +6,7 @@ import API from "../../utils/API";
 
 class DoorsDetail extends Component {
     state = {
+        timerId: 0,
         doors: [],
         windows: []
     };
@@ -27,7 +28,7 @@ class DoorsDetail extends Component {
     loadDoors = () => {
         API.getSensorsByType("door")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState((prevState, props) => { 
                     return { doors: res.data };
                 });
@@ -38,7 +39,7 @@ class DoorsDetail extends Component {
     loadWindows = () => {
         API.getSensorsByType("window")
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState((prevState, props) => { 
                     return { windows: res.data };
                 }); 

@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { LayoutBox, StatBox, InfoBox } from "../../components/AdminLTE";
+import MixedChart from "../../components/MixedChart";
 
 import API from "../../utils/API";
 
 class Dashboard extends Component {
     state = {
+        timerId: 0,
         sensors: {
             thermos: [],
             humids: [],
@@ -16,18 +18,34 @@ class Dashboard extends Component {
             windows: [],
             onwindows: 0
         },
-        weather: {}
+        weather: {},
+        usedPowerChart: { initial: true },
+        forecastChart: { initial: true },
     };
+
+    componentWillMount() {
+        this.loadUsedPower();
+        this.loadForecast([]);
+    }
 
     componentDidMount() {
         this.loadHouseSensors();
         this.loadWeather();
+        let timerId = setInterval(() => {
+            this.loadHouseSensors();
+            this.loadWeather();
+        }, 3000);
+        this.setState({ timerId: timerId });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.timerId);
     }
 
     loadHouseSensors = () => {
         API.getHouses()
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
 
                 let oneHouse = res.data[0];
 
@@ -77,23 +95,119 @@ class Dashboard extends Component {
     loadWeather = () => {
         API.getWeather()
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if(res.data.length > 0) {
                     this.setState({ weather: res.data[0] });
+                    this.loadForecast(res.data[0].forecast);
                 }
             })
             .catch(err => console.log(err));
     };
 
+    loadUsedPower = () => {
+        this.setState({
+            usedPowerChart: {
+                initial: false,
+                title: "Monthly Energy Usage (kWh)",
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Used Power (kWh)',
+                        data:[
+                            440, 508, 418, 393, 569, 635, 1267, 1518, 1116, 869, 593, 522
+                        ],
+                        backgroundColor:[
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)',
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)'
+                        ],
+                        yAxisID: 'y-axis-0',
+                        yAxisRange: {min:0, max:2000, stepSize:500}
+                    },
+                    {
+                        label: 'Avg. Temperature (\xB0F)',
+                        data:[
+                            55, 56, 65, 68, 72, 76, 84, 87, 84, 78, 70, 64
+                        ],
+                        type: 'line',
+                        fill: false,
+                        borderColor: '#8c8b8a',
+                        backgroundColor: '#8c8b8a',
+                        pointBorderColor: '#8c8b8a',
+                        pointBackgroundColor: '#8c8b8a',
+                        pointHoverBackgroundColor: '#8c8b8a',
+                        pointHoverBorderColor: '#8c8b8a',
+                        yAxisID: 'y-axis-1',
+                        yAxisRange: {min:0, max:120, stepSize:30}
+                    }
+                ]
+            }
+        });
+    }
+
+    loadForecast = forecast => {
+        let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
+        let highs = forecast.map(item => item.high);
+        let lows = forecast.map(item => item.low);
+
+        this.setState({ 
+            forecastChart: {
+                initial: false,
+                title: "Weather Forecast",
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'High Temperature (\xB0F)',
+                        data: highs,
+                        type: 'line',
+                        fill: false,
+                        borderColor: 'rgba(255, 99, 132, 0.8)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        pointBorderColor: 'rgba(255, 99, 132, 0.8)',
+                        pointBackgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        pointHoverBackgroundColor: 'rgba(255, 99, 132, 0.8)',
+                        pointHoverBorderColor: 'rgba(255, 99, 132, 0.8)',
+                        yAxisID: 'y-axis-0',
+                        yAxisRange: {min:0, max:120, stepSize:30}
+                    },
+                    {
+                        label: 'Low Temperature (\xB0F)',
+                        data: lows,
+                        type: 'line',
+                        fill: false,
+                        borderColor: 'rgba(54, 162, 235, 0.8)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        pointBorderColor: 'rgba(54, 162, 235, 0.8)',
+                        pointBackgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        pointHoverBackgroundColor: 'rgba(54, 162, 235, 0.8)',
+                        pointHoverBorderColor: 'rgba(54, 162, 235, 0.8)',
+                        yAxisID: 'y-axis-1',
+                        yAxisRange: {min:0, max:120, stepSize:30}
+                    }
+                ]
+            }
+        });
+    }
+
     render() {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="md-1">&nbsp;</Col>
-                    <Col size="md-3">
-                        <img src="/img/smarthome_img.png" style={{"width": "100%"}}/>
+                    <Col size="md-6">
+                        <div style={{"textAlign": "center", "marginTop": "10px"}}>
+                            <img src="/img/home-4room-plans.jpg" alt="" style={{"width": "60%"} }/>
+                            <img src="/img/smarthome_img.png" alt="" style={{"width": "30%"}} />
+                        </div>
                     </Col>
-                    <Col size="md-1">&nbsp;</Col>
                     <Col size="md-6">
                         <Row>
                             <LayoutBox title="Basic Information">
@@ -129,9 +243,15 @@ class Dashboard extends Component {
                                 </Col>
                             </LayoutBox>
                         </Row>
-                        
                     </Col>
-                    <Col size="md-1">&nbsp;</Col>
+                </Row>
+                <Row>
+                    <Col size="md-6">
+                        <MixedChart chartData={this.state.usedPowerChart} />
+                    </Col>
+                    <Col size="md-6">
+                        <MixedChart chartData={this.state.forecastChart} />
+                    </Col>
                 </Row>
             </Container>
         );

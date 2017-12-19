@@ -32,5 +32,20 @@
 
 .info-box-group {
     margin-top: 20px;
+    padding-left: 0;
+}
+
+br.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .info-box-group {
+        padding-left: 10px;
+    }
+
+    br.mobile {
+        display: inline;
+    }
 }
 

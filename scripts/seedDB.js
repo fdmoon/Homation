@@ -94,7 +94,7 @@ const sensorSeed = [
         type: "temperature",
         description: "Indoor Temperature",
         location: "In-House",
-        value: 0,
+        value: 64,
         unit: "F",
         created: new Date(Date.now())
     },
@@ -104,7 +104,7 @@ const sensorSeed = [
         type: "humidity",
         description: "Indoor Humidity",
         location: "In-House",
-        value: 0,
+        value: 50,
         unit: "%",
         created: new Date(Date.now())
     },
