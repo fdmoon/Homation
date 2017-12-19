@@ -21,7 +21,7 @@ class MixedChart extends Component {
                     height={30}
                     options={{
                         maintainAspectRatio: false, 
-                        title: { display:this.props.displayTitle, text:this.props.chartData.title, fontSize:18, fontColor: '#000'},
+                        // title: { display:this.props.displayTitle, text:this.props.chartData.title, fontSize:18, fontColor: '#000'},
                         legend: { display:this.props.displayLegend, position:this.props.legendPosition},
                         scales: {
                             xAxes: [{ display:true, gridLines:{display: false} }],

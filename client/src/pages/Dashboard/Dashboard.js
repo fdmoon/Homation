@@ -86,7 +86,7 @@ class Dashboard extends Component {
                         }
                     }
                 }
-                
+
                 this.setState({ sensors: sensors });
             })
             .catch(err => console.log(err));
@@ -155,11 +155,11 @@ class Dashboard extends Component {
     }
 
     loadForecast = forecast => {
-        let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
+        let labels = forecast.map(item => `${item.date}`);
         let highs = forecast.map(item => item.high);
         let lows = forecast.map(item => item.low);
 
-        this.setState({ 
+        this.setState({
             forecastChart: {
                 initial: false,
                 title: "Weather Forecast",
@@ -204,7 +204,7 @@ class Dashboard extends Component {
                 <Row>
                     <Col size="md-6">
                         <div style={{"textAlign": "center", "marginTop": "10px"}}>
-                            <img src="/img/home-4room-plans.jpg" alt="" style={{"width": "60%"} }/>
+                            <img src="/img/home-4room-plans.jpg" alt="" style={{"width": "55%"} }/>
                             <img src="/img/smarthome_img.png" alt="" style={{"width": "30%"}} />
                         </div>
                     </Col>
@@ -233,7 +233,7 @@ class Dashboard extends Component {
                                             <sup style={{"fontSize": "20px"}}>({this.state.sensors.ondoors + this.state.sensors.onwindows})</sup>
                                         </h3>
                                     </StatBox>
-                                </Col> 
+                                </Col>
                             </LayoutBox>
                         </Row>
                         <Row>
@@ -247,10 +247,14 @@ class Dashboard extends Component {
                 </Row>
                 <Row>
                     <Col size="md-6">
-                        <MixedChart chartData={this.state.usedPowerChart} />
+                        <LayoutBox title={this.state.usedPowerChart.title}>
+                            <MixedChart chartData={this.state.usedPowerChart} />
+                        </LayoutBox>
                     </Col>
                     <Col size="md-6">
-                        <MixedChart chartData={this.state.forecastChart} />
+                        <LayoutBox title={this.state.forecastChart.title}>
+                            <MixedChart chartData={this.state.forecastChart} />
+                        </LayoutBox>
                     </Col>
                 </Row>
             </Container>
@@ -259,4 +263,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
