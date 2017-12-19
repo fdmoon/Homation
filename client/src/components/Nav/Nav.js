@@ -5,7 +5,7 @@ const Nav = () =>
         <nav className="navbar navbar-inverse navbar-top">
             <div className="container-fluid">
                 <div className="navbar-header">
-                    <button type="button" className="collapsed navbar-toggle" data-target="#navlist">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navlist">
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
@@ -42,14 +42,14 @@ const Nav = () =>
                         <br />
                         <p><strong>LinkedIn:</strong></p>
                         <ul>
-                            <li>Drop in on Felix's LinkedIn <a href="https://www.linkedin.com/in/felix-daekeun-moon/" target="_blank">here</a>.</li>
-                            <li>Drop in on Neil's LinkedIn <a href="https://www.linkedin.com/in/neil-dhand/" target="_blank">here</a>.</li>
+                            <li>Drop in on Felix's LinkedIn <a rel="author" href="https://www.linkedin.com/in/felix-daekeun-moon/" target="_blank">here</a>.</li>
+                            <li>Drop in on Neil's LinkedIn <a rel="author" href="https://www.linkedin.com/in/neil-dhand/" target="_blank">here</a>.</li>
                         </ul>
                         <br />
                         <p><strong>GitHub:</strong></p>
                         <ul>
-                            <li>Drop in on Felix's GitHub <a href="https://github.com/fdmoon/" target="_blank">here</a>.</li>
-                            <li>Drop in on Neil's GitHub <a href="https://github.com/neildhand" target="_blank">here</a>.</li>
+                            <li>Drop in on Felix's GitHub <a rel="author" href="https://github.com/fdmoon/" target="_blank">here</a>.</li>
+                            <li>Drop in on Neil's GitHub <a rel="author" href="https://github.com/neildhand" target="_blank">here</a>.</li>
                         </ul>
                     </div>
                     <div className="modal-footer">
