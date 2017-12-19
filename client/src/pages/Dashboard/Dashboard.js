@@ -155,7 +155,8 @@ class Dashboard extends Component {
     }
 
     loadForecast = forecast => {
-        let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
+        // let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
+        let labels = forecast.map(item => `${item.date}`);
         let highs = forecast.map(item => item.high);
         let lows = forecast.map(item => item.low);
 

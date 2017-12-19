@@ -5,7 +5,7 @@ import ToggleSwitch from '@trendmicro/react-toggle-switch';
 
 // Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-toggle-switch/dist/react-toggle-switch.css';
-import "./style.css"
+import "./style.css";
 
 class ToggleBtn extends Component {
     // componentDidMount() {

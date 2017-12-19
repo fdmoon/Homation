@@ -1,0 +1,27 @@
+.error-content-ex {
+    padding-left: 50px;
+    padding-left: 10px;
+}
+
+.error-text {
+    font-size: 1.2em !important;
+}
+
+@media screen and (max-width: 768px) {
+    .jumbotron {
+        padding-top: 0;
+    }
+
+    .content-ex {
+        padding-top: 5px;
+    }
+
+    .error-content-ex {
+        padding-left: 10px;
+    }
+
+    .error-text {
+        font-size: 1em  !important;
+    }
+}
+

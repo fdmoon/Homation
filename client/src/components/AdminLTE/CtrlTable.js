@@ -1,6 +1,6 @@
 import React from "react";
 import ToggleBtn from "../ToggleBtn";
-import "./style.css"
+import "./style.css";
 
 export const CtrlTable = props => 
     <div className="box box-ex">
