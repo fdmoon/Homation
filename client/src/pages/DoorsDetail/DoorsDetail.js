@@ -6,6 +6,7 @@ import API from "../../utils/API";
 
 class DoorsDetail extends Component {
     state = {
+        timerId: 0,
         doors: [],
         windows: []
     };

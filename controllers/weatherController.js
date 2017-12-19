@@ -40,7 +40,7 @@ const weatherController = {
                             humidity: result[0].current.humidity,
                             winddisplay: result[0].current.winddisplay,
                             imageUrl: result[0].current.imageUrl,
-                            forecast: result[0].current.forecast
+                            forecast: result[0].forecast
                         };
                 
                         db.Weather
