@@ -18,8 +18,8 @@ class MixedChart extends Component {
             <div className="chart">
                 <Bar
                     data={this.props.chartData}
-                    width={100}
-                    height={30}
+                    width={!this.props.chartData.ratio ? 100 : this.props.chartData.ratio.x}
+                    height={!this.props.chartData.ratio ? 30 : this.props.chartData.ratio.y}
                     options={{
                         maintainAspectRatio: false, 
                         // title: { display:this.props.displayTitle, text:this.props.chartData.title, fontSize:18, fontColor: '#000'},
@@ -32,7 +32,6 @@ class MixedChart extends Component {
                             ]
                         }
                     }}
-                    // redraw={true}
                 />
             </div>
         );

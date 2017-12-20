@@ -57,9 +57,13 @@ class HumidsDetail extends Component {
   }
   render() {
     return (
-      <div>
-        <HumidChart chartData={this.state.chartData} />
-      </div>
+      <Container>
+        <Row>
+          <Col size="md-12">
+            <HumidChart chartData={this.state.chartData} />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

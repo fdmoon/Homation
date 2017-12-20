@@ -19,8 +19,8 @@ class Dashboard extends Component {
             onwindows: 0
         },
         weather: {},
-        usedPowerChart: { initial: true },
-        forecastChart: { initial: true },
+        usedPowerChart: {},
+        forecastChart: {},
     };
 
     componentWillMount() {
@@ -107,7 +107,6 @@ class Dashboard extends Component {
     loadUsedPower = () => {
         this.setState({
             usedPowerChart: {
-                initial: false,
                 title: "Monthly Energy Usage (kWh)",
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [
@@ -155,17 +154,13 @@ class Dashboard extends Component {
     }
 
     loadForecast = forecast => {
-
-
         // let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
-
         let labels = forecast.map(item => `${item.date}`);
         let highs = forecast.map(item => item.high);
         let lows = forecast.map(item => item.low);
 
         this.setState({
             forecastChart: {
-                initial: false,
                 title: "Weather Forecast",
                 labels: labels,
                 datasets: [
@@ -267,3 +262,4 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
