@@ -33,8 +33,8 @@ class HumidChart extends Component {
           scales: {
               xAxes: [{ display:true, gridLines:{display: false} }],
               yAxes: [
-                  { type:'linear', position:'left', id:"y-axis-0"},
-                  { type:'linear', position:'right', id:"y-axis-1"}
+                  { type:'linear', position:'left', id:"y-axis-0", ticks:{min:50, max:80, stepSize:5}},
+                  { type:'linear', position:'right', id:"y-axis-1", ticks:{min:50, max:80, stepSize:5}}
               ]
           }
           }}
