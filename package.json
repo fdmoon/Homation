@@ -29,6 +29,7 @@
     "react": "^16.2.0",
     "react-chartjs-2": "^2.6.4",
     "react-router-dom": "^4.1.2",
+    "react-svg-gauge": "^1.0.6",
     "socket.io": "^2.0.4",
     "weather-js": "^2.0.0"
   }
