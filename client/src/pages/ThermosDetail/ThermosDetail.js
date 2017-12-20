@@ -168,7 +168,7 @@ class ThermosDetail extends Component {
                             <Col size="md-2">&nbsp;</Col>
                             <Col size="md-3">
                                 <Gauge 
-                                    value={this.state.stateVal.valTarget} width={200} height={160} min={30} max={120} label="Target (&deg;F)" 
+                                    value={this.state.stateVal.valTarget} width={200} height={160} min={20} max={120} label="Target (&deg;F)" 
                                     color='rgba(255, 99, 132, 0.8)' backgroundColor='#edebeb' 
                                     topLabelStyle={{"fontSize": "15px", "fontWeight": "bold", "marginBottom": "0", "paddingBottom": "0"}}
                                     valueLabelStyle={{"fontSize": "15px", "fontWeight": "bold"}} 
@@ -177,7 +177,7 @@ class ThermosDetail extends Component {
                             </Col>
                             <Col size="md-3">
                             <Gauge 
-                                    value={this.state.stateVal.valTemperature} width={200} height={160} min={30} max={120} label="Current (&deg;F)" 
+                                    value={this.state.stateVal.valTemperature} width={200} height={160} min={20} max={120} label="Current (&deg;F)" 
                                     color='rgba(54, 162, 235, 0.8)' backgroundColor='#edebeb' 
                                     topLabelStyle={{"fontSize": "15px", "fontWeight": "bold", "marginBottom": "0", "paddingBottom": "0"}}
                                     valueLabelStyle={{"fontSize": "15px", "fontWeight": "bold"}} 
