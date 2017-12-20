@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css"
+import "./style.css";
 
 export const SimTable = props => 
     <div className="box box-ex">
