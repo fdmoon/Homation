@@ -86,7 +86,7 @@ class Dashboard extends Component {
                         }
                     }
                 }
-                
+
                 this.setState({ sensors: sensors });
             })
             .catch(err => console.log(err));
@@ -155,12 +155,15 @@ class Dashboard extends Component {
     }
 
     loadForecast = forecast => {
+
+
         // let labels = forecast.map(item => `${item.date} (${item.skytextday})`);
+
         let labels = forecast.map(item => `${item.date}`);
         let highs = forecast.map(item => item.high);
         let lows = forecast.map(item => item.low);
 
-        this.setState({ 
+        this.setState({
             forecastChart: {
                 initial: false,
                 title: "Weather Forecast",
@@ -234,7 +237,7 @@ class Dashboard extends Component {
                                             <sup style={{"fontSize": "20px"}}>({this.state.sensors.ondoors + this.state.sensors.onwindows})</sup>
                                         </h3>
                                     </StatBox>
-                                </Col> 
+                                </Col>
                             </LayoutBox>
                         </Row>
                         <Row>
@@ -264,4 +267,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import LightsDetail from "./pages/LightsDetail";
@@ -7,6 +7,11 @@ import DoorsDetailEx from "./pages/DoorsDetailEx";
 import Carousel from "./pages/Carousel";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import HumidsDetail from "./pages/HumidsDetail";
+
+
+
+
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -28,6 +33,7 @@ const App = () => {
                         <Route exact path="/doors" component={DoorsDetail} />
                         <Route exact path="/doors-ex" component={DoorsDetailEx} />
                         <Route exact path="/about" component={Carousel} />
+                        <Route exact path="/humids" component={HumidsDetail} />
                         <Route component={NoMatch} />
                     </Switch>
                 </div>
@@ -38,4 +44,3 @@ const App = () => {
 }
 
 export default App;
-
