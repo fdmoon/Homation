@@ -21,13 +21,21 @@ class HumidChart extends Component {
       <div className="chart">
         <Bar
           data={this.state.chartData}
-          width={15}
-          height={5}
+          width={5}
+          height={2}
           options={{maintainAspectRatio: false,
             title:{   display:this.props.displayTitle,   text:'Weekly Humidity (%)', fontSize:30
           },
           legend:{
-            display:this.props.displayLegend, position:this.props.legendPosition
+            display:this.props.displayLegend,
+            position:this.props.legendPosition
+          },
+          scales: {
+              xAxes: [{ display:true, gridLines:{display: false} }],
+              yAxes: [
+                  { type:'linear', position:'left', id:"y-axis-0"},
+                  { type:'linear', position:'right', id:"y-axis-1"}
+              ]
           }
           }}
           />

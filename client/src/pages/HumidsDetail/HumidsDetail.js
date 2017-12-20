@@ -38,6 +38,18 @@ class HumidsDetail extends Component {
               'rgba(255, 159, 64, 0.6)',
               'rgba(255, 99, 132, 0.6)'
             ]
+          },
+          {
+              label: 'Indoor Temperature',
+              data: [65,67,70,63,74,60,71],
+              type: 'line',
+              fill: false,
+              borderColor: 'rgba(54, 162, 235, 0.8)',
+              backgroundColor: 'rgba(54, 162, 235, 0.8)',
+              pointBorderColor: 'rgba(54, 162, 235, 0.8)',
+              pointBackgroundColor: 'rgba(54, 162, 235, 0.8)',
+              pointHoverBackgroundColor: 'rgba(54, 162, 235, 0.8)',
+              pointHoverBorderColor: 'rgba(54, 162, 235, 0.8)'
           }
         ]
       }
