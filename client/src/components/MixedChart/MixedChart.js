@@ -19,7 +19,8 @@ class MixedChart extends Component {
                 <Bar
                     data={this.props.chartData}
                     width={!this.props.chartData.ratio ? 100 : this.props.chartData.ratio.x}
-                    height={!this.props.chartData.ratio ? 30 : this.props.chartData.ratio.y}
+                    height={300}
+                    // height={!this.props.chartData.ratio ? 30 : this.props.chartData.ratio.y}
                     options={{
                         maintainAspectRatio: false, 
                         // title: { display:this.props.displayTitle, text:this.props.chartData.title, fontSize:18, fontColor: '#000'},

@@ -21,8 +21,8 @@ class HumidChart extends Component {
       <div className="chart">
         <Bar
           data={this.state.chartData}
-          width={6}
-          height={3}
+          width={600}
+          height={500}
           options={{maintainAspectRatio: false,
             title:{   display:this.props.displayTitle,   text:'Weekly Humidity (%)', fontSize:30
           },
